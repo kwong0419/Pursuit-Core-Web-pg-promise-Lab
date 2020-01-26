@@ -46,5 +46,6 @@ Add a new table `likes` that represents a user liking a post. It should have the
     Then, add the following functionality:
     ​
 - Display the number of likes of each post
+
 - Display users who have liked each post
 - Filter posts by the number of likes (e.g show only posts with 5+ likes)
