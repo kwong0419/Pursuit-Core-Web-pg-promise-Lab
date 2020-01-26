@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="index.js"></script>
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <section id="users">
+        <h2>Add New User</h2>
+        <form id="addUserForm">
+            <p>First Name: <input type="text" id='firstNameInput'></p>
+            <p>Last Name: <input type="text"id='lastNameInput'></p>
+            <p>Age: <input type="number", id='ageInput'></p>
+            <button>Submit</button>
+        </form> 
+        <h2>All users</h2>
+        <ul id="usersList">
+        </ul>
+    </section>
+
+    <section id="posts">
+        <section id="display">
+            <select class="users" id="displayPostSelect">
+                <option value="disabled" selected disabled>Select a user</option>
+                <option value="all">All Posts</option>
+            </select>
+
+            <div id="allPosts"></div>
+        </section>
+
+        <section id="create">
+            <form id="createPostForm">
+                <select class="users" id="createPostSelect">
+                    <option value="disabled" selected disabled>Select a user</option>
+                </select>
+                <label for="postInput">Input a post: </label>
+                <input type="text" id="postInput" placeholder="Input Here"></input>
+                <button type="submit" id="createPostBtn">Create Post</button>
+            </form>
+            <div id="createResponse"></div>
+        </section>
+        
+    </section> 
+
+
+</body>
+</html>
