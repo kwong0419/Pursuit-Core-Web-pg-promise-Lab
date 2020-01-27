@@ -2,11 +2,16 @@ const { db } = require("../db/db");
 
 const getAllPosts = async (req, res, next) => {
   try {
+    let { post_id } = req.body;
     res.json({
       posts: await db.any(
         "SELECT * FROM posts INNER JOIN users ON posts.poster_id = users.id"
       ),
-      message: "Successfully got all posts",
+      likes: await db.any(
+        "SELECT * FROM likes INNER JOIN posts ON posts.id = likes.post_id WHERE post_id = $1",
+        [post_id]
+      ),
+      message: "Successfully got all posts and likes",
       timestamp: new Date().toString()
     });
   } catch (err) {
@@ -16,6 +21,7 @@ const getAllPosts = async (req, res, next) => {
 
 const getUserPosts = async (req, res, next) => {
   try {
+    debugger;
     let { user_id } = req.params;
     let userPosts = await db.any(
       "SELECT * FROM posts INNER JOIN users ON posts.poster_id = users.id WHERE poster_id = $1",
@@ -54,5 +60,17 @@ const createPost = async (req, res, next) => {
     next(err);
   }
 };
+
+// const getAllLikes = async (req, res, next) => {
+//   try {
+//     res.json({
+//       likes,
+//       message: "Successfully get all likes from Post: " + post_id,
+//       timestamp: newDate().toString()
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 module.exports = { getAllPosts, getUserPosts, createPost };

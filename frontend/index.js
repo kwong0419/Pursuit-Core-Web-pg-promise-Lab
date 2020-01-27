@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let res = await axios.get(
       "http://localhost:3002/posts/" + displayPostSelect.value
     );
+    debugger;
     showUserPosts(res.data);
   });
 
